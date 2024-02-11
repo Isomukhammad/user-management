@@ -1,6 +1,6 @@
-import { SVGProps } from "react";
+import { JSX } from "react";
 
-const Sprites = (): SVGProps<SVGSVGElement> => (
+const Sprites = (): JSX.Element => (
   <svg style={{ display: "none" }}>
     <defs>
       <symbol id={"delete"} viewBox={"0 0 24 24"}>
