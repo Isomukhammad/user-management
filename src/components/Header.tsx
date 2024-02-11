@@ -41,16 +41,21 @@ const Header = (): JSX.Element => {
           </li>
         </ul>
         {currentUser && (
-          <button
-            type={"button"}
-            title={"Logout"}
-            onClick={() => removeUser()}
-            className={
-              "rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600 active:bg-blue-700"
-            }
-          >
-            Logout
-          </button>
+          <div className={"flex items-center gap-4"}>
+            <p>
+              Hello, <span className={"font-medium"}>{currentUser.email}</span>
+            </p>
+            <button
+              type={"button"}
+              title={"Logout"}
+              onClick={() => removeUser()}
+              className={
+                "rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600 active:bg-blue-700"
+              }
+            >
+              Logout
+            </button>
+          </div>
         )}
       </div>
     </header>

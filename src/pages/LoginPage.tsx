@@ -20,7 +20,7 @@ const LoginPage = (): JSX.Element => {
 
   const login = async (email: string, password: string): Promise<void> => {
     try {
-      await signIn({ email, password }).then((user) => installUser(user.id));
+      await signIn({ email, password }).then((user) => installUser(user));
     } catch (error) {
       setError((error as Error).message);
       throw new Error((error as Error).message);

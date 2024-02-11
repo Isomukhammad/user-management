@@ -1,30 +1,35 @@
 import { JSX, ReactNode, createContext, useContext, useState } from "react";
 
+interface UserType {
+  id: string;
+  email: string;
+}
+
 interface AuthContextProps {
-  currentUser: string;
-  installUser: (id: string) => void;
+  currentUser: UserType | null;
+  installUser: (user: UserType) => void;
   removeUser: () => void;
 }
 
 const AuthContext = createContext<AuthContextProps>({
-  currentUser: "",
+  currentUser: null,
   installUser: (): void => {},
   removeUser: (): void => {},
 });
 
 const AuthProvider = ({ children }: { children: ReactNode }): JSX.Element => {
-  const [currentUser, setCurrentUser] = useState<string>(
-    sessionStorage.getItem("currentUser") || "",
+  const [currentUser, setCurrentUser] = useState<UserType | null>(
+    JSON.parse(sessionStorage.getItem("currentUser") as string) || null,
   );
 
-  const installUser = (id: string): void => {
-    sessionStorage.setItem("currentUser", id);
-    setCurrentUser(id);
+  const installUser = (user: UserType): void => {
+    sessionStorage.setItem("currentUser", JSON.stringify(user));
+    setCurrentUser(user);
   };
 
   const removeUser = (): void => {
     sessionStorage.removeItem("currentUser");
-    setCurrentUser("");
+    setCurrentUser(null);
   };
 
   return (

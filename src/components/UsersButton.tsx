@@ -27,10 +27,13 @@ const UsersButton = ({ ids, getUserList }: UsersButtonProps): JSX.Element => {
         disabled={isLoading}
         onClick={() => handleButton(blockUsers)}
         className={
-          "rounded bg-yellow-500 px-4 py-2 font-bold text-white hover:bg-yellow-600 active:bg-yellow-700 disabled:cursor-not-allowed disabled:opacity-50"
+          "flex flex-row items-center gap-1 rounded bg-yellow-500 px-4 py-2 font-bold text-white hover:bg-yellow-600 active:bg-yellow-700 disabled:cursor-not-allowed disabled:opacity-50"
         }
       >
-        Block
+        <svg viewBox={"0 0 24 24"} className={"h-6 w-6 fill-none stroke-white"}>
+          <use xlinkHref={"#lock"} />
+        </svg>
+        <span>Block</span>
       </button>
       <button
         type={"button"}
