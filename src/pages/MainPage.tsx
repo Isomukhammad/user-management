@@ -28,7 +28,8 @@ const MainPage = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    const user = users.find((user) => user.id === currentUser.id);
+    const user =
+      currentUser && users.find((user) => user.id === currentUser.id);
     if (!isLoading && user && !user.is_active) removeUser();
     if (!isLoading && !user) removeUser();
   }, [isLoading, currentUser, users, removeUser]);
